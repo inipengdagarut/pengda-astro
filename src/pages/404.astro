@@ -1,0 +1,14 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+import LogoINI from '@/assets/logo-ini.svg'
+
+---
+<Layout title="Error">
+    <div class="flex items-center justify-center absolute top-0 right-0 bottom-0 left-0 bg-accent-foreground text-accent">
+        <div class="text-center">
+            <Image src={LogoINI} alt="Logo INI" width={256} height={256} class="mb-8 mx-auto"/>
+            <p class="text-lg">Maaf, halaman yang anda tuju tidak tersedia</p>
+        </div>
+    </div>
+</Layout>

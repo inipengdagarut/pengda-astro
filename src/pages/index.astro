@@ -1,19 +1,9 @@
 ---
-import '@/styles/globals.css'
-
-import { Button } from "@/components/ui/button"
+import Layout from "@/layouts/Layout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-		<Button>Hello World</Button>
-	</body>
-</html>
+<Layout title="hallo">
+	<p class="prose lg:prose-lg">
+	Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, iusto quod, error pariatur velit commodi cum harum hic dolore illo ex facilis beatae deserunt esse quidem doloribus totam cupiditate fugit?
+	</p>
+</Layout>
