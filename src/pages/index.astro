@@ -1,9 +1,13 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import PostList from "@/components/PostList.astro";
 ---
 
 <Layout title="hallo">
-	<p class="prose lg:prose-lg">
-	Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, iusto quod, error pariatur velit commodi cum harum hic dolore illo ex facilis beatae deserunt esse quidem doloribus totam cupiditate fugit?
-	</p>
+	<div class="container mt-16">
+		<h1 class="text-5xl font-serif">Artikel.</h1>
+	</div>
+	<div class="container">
+		<PostList />
+	</div>
 </Layout>

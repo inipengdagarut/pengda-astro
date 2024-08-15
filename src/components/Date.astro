@@ -1,0 +1,17 @@
+---
+interface Props {
+    time: string | number | Date;
+    class?: string|undefined;
+}
+
+import dayjs from 'dayjs'
+import localizedFormat from "dayjs/plugin/localizedFormat";
+import "dayjs/locale/id";
+
+dayjs.extend(localizedFormat);
+dayjs.locale("id");
+
+const { class:className, time } = Astro.props;
+---
+
+<div class:list={className}>{dayjs(time).format("DD MMMM YYYY")} </div>

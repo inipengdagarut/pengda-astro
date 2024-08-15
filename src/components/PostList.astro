@@ -1,0 +1,25 @@
+---
+import Date from '@/components/Date.astro';
+import { badgeVariants } from "@/components/ui/badge";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar";
+import {AvatarComponent} from '@/components/react/AvatarComponent'
+---
+
+<div>
+    <Date time="2024-08-17" class='text-muted-foreground font-semibold text-sm mb-1'/>
+    <h2 class="font-serif text-2xl mb-2">Ini adalah title nya dong bro</h2>
+    <p class="line-clamp-3 mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam molestiae, inventore exercitationem aut eligendi nulla delectus obcaecati iste ad soluta tempora cum sunt eveniet praesentium, tenetur expedita ea molestias dolores.</p>
+    <div class="mb-4 flex items-center gap-2">
+        <AvatarComponent src="https://github.com/shadcn.png" alt="@shadcn" fallbackText="C" size="2xl" client:load />
+        <p>Jhon Cena</p>
+    </div>
+    <div class="flex gap-1">
+        <a href="#" class={badgeVariants()}>Cardinal</a>
+        <a href="#" class={badgeVariants()}>Cardinal</a>
+        <a href="#" class={badgeVariants()}>Cardinal</a>
+    </div>
+</div>
