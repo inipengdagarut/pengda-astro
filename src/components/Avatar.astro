@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 interface Props {
     src: string;
     alt: string;
-    fallbackText: string;
+    fallbackText?: string;
     size?: "sm" | "md" | "lg" | "xl";
 }
 function avaSize(size: "sm" | "md" | "lg" | "xl" | "2xl" | undefined) {
@@ -15,9 +15,19 @@ function avaSize(size: "sm" | "md" | "lg" | "xl" | "2xl" | undefined) {
   return ('w-10 h-10')
 }
 
+const getInitial = (theName: string | undefined) => {
+		if (!theName) {
+			return 'X';
+		}
+		return theName.charAt(0).toUpperCase();
+	}
+
 const { src, alt, size, fallbackText } = Astro.props;
 ---
 
-<div class={`relative flex shrink-0 overflow-hidden rounded-full ${avaSize(size)}`}>
-    <Image src={src} alt={alt} class='aspect-square w-full h-full'/>
+<div class={`relative flex shrink-0 overflow-hidden rounded-full bg-muted ${avaSize(size)}`}>
+    <Image src={src} alt={alt} class='aspect-square w-full h-full z-10' width={128} height={128}/>
+    <div class="absolute top-0 right-0 bottom-0 left-0 flex items-center justify-center">
+      <p>{getInitial(fallbackText)}</p>
+    </div>
 </div>

@@ -30,10 +30,10 @@ const { posts } = Astro.props;
 ---
 
 <Layout title={`Berita dengan kategori ${tag}`}>
-    <div class="container mx-auto mt-16">
+    <div class="container mx-auto mt-8 lg:mt-16">
         <SectionTitle title={tag} />
     </div>
-    <div class="container mx-auto lg:flex gap-16">
+    <div class="container mx-auto lg:flex gap-16 mb-8 lg:mb-16">
         <div class="lg:w-3/4">
             <ul>
                 {
@@ -48,6 +48,7 @@ const { posts } = Astro.props;
                                 tags={post.data.tags}
                                 leading={idx === 0 ? true : false}
                                 collection={post.collection}
+                                author={post.data.author}
                             />
                         </li>
                     ))
