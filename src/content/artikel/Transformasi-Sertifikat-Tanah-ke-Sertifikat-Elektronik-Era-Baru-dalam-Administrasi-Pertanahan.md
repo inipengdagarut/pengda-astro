@@ -3,7 +3,7 @@ title: 'Transformasi Sertifikat Tanah ke Sertifikat Elektronik: Era Baru dalam A
 postDate: '2024-03-22'
 author: 'redaksi'
 # image: '../../assets/ini-garut.jpeg'
-summary: 'Transformasi sertifikat tanah fisik menjadi sertifikat elektronik merupakan langkah maju dalam modernisasi administrasi pertanahan di Indonesia. Dengan mengadopsi teknologi digital, diharapkan proses pengelolaan data kepemilikan tanah menjadi lebih efisien, transparan, dan aman.'
+excerpt: 'Transformasi sertifikat tanah fisik menjadi sertifikat elektronik merupakan langkah maju dalam modernisasi administrasi pertanahan di Indonesia. Dengan mengadopsi teknologi digital, diharapkan proses pengelolaan data kepemilikan tanah menjadi lebih efisien, transparan, dan aman.'
 tags: ['tugas', 'konferda', 'pengurus', 'fungsi notaris']
 draft: false
 ---

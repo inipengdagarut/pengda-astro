@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+
+import SectionTitle from "@/components/SectionTitle.astro";
+import Layout from "@/layouts/Layout.astro";
+import PostList from "@/components/PostList.astro";
+
+const allPosts = await getCollection("berita");
+const posts = allPosts.sort(
+    (a, b) => b.data.postDate.getTime() - a.data.postDate.getTime(),
+);
+---
+
+<Layout title="Berita">
+    <div class="container mx-auto mt-16">
+        <SectionTitle title="Berita Pengda." />
+    </div>
+    <div class="container mx-auto lg:flex gap-8">
+        <div class="lg:w-3/4">
+            <ul>
+                {
+                    posts.map((post, idx) => (
+                        <li class="py-6 border-b last:border-0">
+                            <PostList
+                                title={post.data.title}
+                                postDate={post.data.postDate}
+                                slug={`/berita/${post.slug}`}
+                                excerpt={post.data.excerpt}
+                                coverImage={post.data.coverImage}
+                                tags={post.data.tags}
+                                leading={idx === 0 ? true : false}
+                            />
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+        <div class="border-l"></div>
+        <div class="lg:w-1/4">ss</div>
+    </div>
+</Layout>

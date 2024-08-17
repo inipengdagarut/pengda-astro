@@ -3,8 +3,8 @@ title: 'Materai dan Mispersepsi masyarakat'
 postDate: '2024-02-22'
 author: 'redaksi'
 # image: '../../assets/ini-garut.jpeg'
-summary: 'Banyak masyarakat yang salah kaprah dengan menganggap bahwa tanpa materai, suatu perjanjian dianggap tidak sah. Padahal, keberadaan materai hanyalah untuk keperluan pajak dan pembuktian administratif. Kesalahpahaman ini dapat menyebabkan kebingungan dan kekhawatiran yang tidak perlu dalam pembuatan perjanjian.'
-tags: ['tugas', 'konferda', 'pengurus', 'fungsi notaris']
+excerpt: 'Banyak masyarakat yang salah kaprah dengan menganggap bahwa tanpa materai, suatu perjanjian dianggap tidak sah. Padahal, keberadaan materai hanyalah untuk keperluan pajak dan pembuktian administratif. Kesalahpahaman ini dapat menyebabkan kebingungan dan kekhawatiran yang tidak perlu dalam pembuatan perjanjian.'
+tags: [tugas, 'konferda', 'pengurus', 'fungsi notaris']
 draft: false
 ---
 

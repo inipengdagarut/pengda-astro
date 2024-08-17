@@ -2,8 +2,8 @@
 title: 'Pelantikan Pengurus Daerah Ikatan Notaris Indonesia Kabupaten Garut Periode 2023/2026'
 postDate: '07-07-2024'
 author: 'Tedy Herlambang'
-image: './images/pelantikan-pengurus-2023-2026.jpg'
-summary: 'Pada tanggal 3 Juli 2024, telah dilantik Pengurus Daerah Ikatan Notaris Indonesia Kabupaten Garut Periode 2023/2026, bertempat di Mini Caffe Kabupaten Garut'
+coverImage: './images/pelantikan-pengurus-2023-2026.jpg'
+excerpt: 'Pada tanggal 3 Juli 2024, telah dilantik Pengurus Daerah Ikatan Notaris Indonesia Kabupaten Garut Periode 2023/2026, bertempat di Mini Caffe Kabupaten Garut'
 tags: ['kegiatan', 'pelantikan', 'pengurus']
 draft: false
 ---

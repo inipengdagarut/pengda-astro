@@ -3,7 +3,7 @@ title: 'Peran, Fungsi dan Keberadaan Notaris Indonesia'
 postDate: '2023-01-22'
 author: 'Herlien Budiono'
 # image: '../../assets/ini-garut.jpeg'
-summary: '​​​​​​​Peran notaris sejalan dengan politik hukum pemerintah di dalam pembuatan akta berkaitan dengan pendirian perusahan, peraturan dalam rangka pemenuhan Ease of Doing Business di Indonesia.'
+excerpt: '​​​​​​​Peran notaris sejalan dengan politik hukum pemerintah di dalam pembuatan akta berkaitan dengan pendirian perusahan, peraturan dalam rangka pemenuhan Ease of Doing Business di Indonesia.'
 tags: ['tugas', 'konferda', 'pengurus', 'fungsi notaris']
 draft: false
 ---

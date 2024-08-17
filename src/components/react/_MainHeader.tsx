@@ -4,7 +4,7 @@ import { siteNav } from '@/data/siteNav';
 
 import SiteLogo from '../../public/logo-ini-text-1.svg';
 import Link from "next/link";
-import { OffCanvas } from "./OffCanvas";
+import { OffCanvas } from "./_OffCanvas";
 
 
 export default function MainHeader() {

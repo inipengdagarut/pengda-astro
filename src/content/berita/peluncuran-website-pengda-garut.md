@@ -2,8 +2,8 @@
 title: 'Peluncuran Website Resmi Pengurus Daerah Garut Ikatan Notaris Indonesia'
 postDate: '2024-07-20'
 author: 'Tedy Herlambang'
-image: './images/launching-web.jpg'
-summary: 'Dalam upaya meningkatkan layanan informasi dan komunikasi kepada anggotanya serta masyarakat umum, Pengurus Daerah (Pengda) Garut Ikatan Notaris Indonesia (INI) resmi meluncurkan website baru mereka pada hari ini. Acara peluncuran yang berlangsung di Aula Serbaguna Kantor Pengda Garut ini dihadiri oleh sejumlah notaris, pejabat pemerintah daerah, dan perwakilan organisasi profesi lainnya.'
+coverImage: './images/launching-web.jpg'
+excerpt: 'Dalam upaya meningkatkan layanan informasi dan komunikasi kepada anggotanya serta masyarakat umum, Pengurus Daerah (Pengda) Garut Ikatan Notaris Indonesia (INI) resmi meluncurkan website baru mereka pada hari ini. Acara peluncuran yang berlangsung di Aula Serbaguna Kantor Pengda Garut ini dihadiri oleh sejumlah notaris, pejabat pemerintah daerah, dan perwakilan organisasi profesi lainnya.'
 tags: ['kegiatan', 'pelantikan', 'pengurus']
 draft: false
 ---

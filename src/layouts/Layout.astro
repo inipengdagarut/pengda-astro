@@ -1,7 +1,28 @@
 ---
+import type { NavMenu } from "@/types"
+
 import '@/styles/globals.css'
 
 import { Button } from "@/components/ui/button"
+import MainHeader from '@/components/MainHeader.astro';
+import MainFooter from '@/components/MainFooter.astro';
+import siteNav from '@/lib/siteNav';
+
+function flattenMenu(menuItems: NavMenu[]): NavMenu[] {
+    const flattenedMenu: NavMenu[] = [];
+    menuItems.forEach(item => {
+        if (item.subMenu) {
+            item.subMenu.forEach(subItem => {
+                flattenedMenu.push(subItem);
+            });
+        } else {
+            flattenedMenu.push(item);
+        }
+    });
+    return flattenedMenu;
+}
+
+const navLinks = flattenMenu(siteNav)
 
 const { title } = Astro.props;
 ---
@@ -22,7 +43,9 @@ const { title } = Astro.props;
 			rel="stylesheet"
 		/>
 	</head>
-	<body>
+	<body class="bg-background min-h-screen">
+		<MainHeader />
 		<slot/>
+		<MainFooter dataMenu={navLinks}/>
 	</body>
 </html>

@@ -8,7 +8,7 @@ const beritaPostCollections = defineCollection({
         author: z.string().default('Redaksi'),
         coverImage: image().optional(),
         draft: z.boolean(),
-        summary: z.string().optional(),
+        excerpt: z.string().optional(),
         tags: z.array(z.string()).optional()
     })
 })
@@ -21,7 +21,7 @@ const artikelPostCollections = defineCollection({
         author: z.string().default('Redaksi'),
         coverImage: image().optional(),
         draft: z.boolean(),
-        summary: z.string().optional(),
+        excerpt: z.string().optional(),
         tags: z.array(z.string()).optional()
     })
 })
@@ -34,7 +34,7 @@ const pengumumanCollections = defineCollection({
         author: z.string().default('Pengda I.N.I Kab.Garut'),
         coverImage: image().optional(),
         draft: z.boolean().optional(),
-        summary: z.string().optional(),
+        excerpt: z.string().optional(),
         tags: z.array(z.string()).optional()
     })
 })

@@ -3,7 +3,7 @@ title: 'Pembagian Harta Bersama dalam Perceraian: Studi Kasus dan Perkembangan H
 postDate: '2024-01-22'
 author: 'anynomus'
 # image: '../../assets/ini-garut.jpeg'
-summary: 'Pembagian harta bersama dalam perceraian merupakan isu yang kompleks, melibatkan berbagai aspek hukum adat, hukum Islam, dan hukum perdata. Kasus-kasus besar seperti perceraian Bambang Trihatmojo dan Halimah Agustina Kamil membantu memperjelas penerapan hukum dan melindungi hak-hak perempuan dalam perkawinan dan perceraian di Indonesia. Dengan adanya perlindungan hukum yang lebih jelas, diharapkan dapat tercipta keadilan dan kesejahteraan bagi semua pihak yang terlibat dalam perceraian.'
+excerpt: 'Pembagian harta bersama dalam perceraian merupakan isu yang kompleks, melibatkan berbagai aspek hukum adat, hukum Islam, dan hukum perdata. Kasus-kasus besar seperti perceraian Bambang Trihatmojo dan Halimah Agustina Kamil membantu memperjelas penerapan hukum dan melindungi hak-hak perempuan dalam perkawinan dan perceraian di Indonesia. Dengan adanya perlindungan hukum yang lebih jelas, diharapkan dapat tercipta keadilan dan kesejahteraan bagi semua pihak yang terlibat dalam perceraian.'
 tags: ['tugas', 'konferda', 'pengurus', 'fungsi notaris']
 draft: false
 ---

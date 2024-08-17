@@ -2,8 +2,8 @@
 title: 'Perayaan Hari Ulang Tahun ke-116 Ikatan Notaris Indonesia'
 postDate: '01-07-2024'
 author: 'Tedy Herlambang'
-image: './images/hut-ini.jpg'
-summary: 'Pada tanggal 1 Juli 2024, Ikatan Notaris Indonesia (INI) merayakan hari ulang tahun ke-116 mereka dengan penuh kebanggaan dan semangat. Perayaan yang digelar secara nasional ini menjadi momentum untuk mengenang perjalanan panjang dan prestasi yang telah dicapai oleh organisasi ini sejak didirikan.'
+coverImage: './images/hut-ini.jpg'
+excerpt: 'Pada tanggal 1 Juli 2024, Ikatan Notaris Indonesia (INI) merayakan hari ulang tahun ke-116 mereka dengan penuh kebanggaan dan semangat. Perayaan yang digelar secara nasional ini menjadi momentum untuk mengenang perjalanan panjang dan prestasi yang telah dicapai oleh organisasi ini sejak didirikan.'
 tags: ['HUT', 'Notaris']
 draft: false
 ---

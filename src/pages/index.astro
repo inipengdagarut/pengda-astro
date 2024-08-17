@@ -1,13 +1,114 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
+
+// Components
 import PostList from "@/components/PostList.astro";
+import HomePostList from "@/components/HomePostList.astro";
+import SectionTitle from "@/components/SectionTitle.astro";
+
+// Posts Data
+const allBeritaPosts = await getCollection("berita");
+const beritaPosts = allBeritaPosts.sort(
+	(a, b) => b.data.postDate.getTime() - a.data.postDate.getTime(),
+);
+const latestBeritaPost = beritaPosts.slice(0, 3);
+
+// List Pengumuman
+const allPengumumanPosts = await getCollection("pengumuman");
+const pengumumanPosts = allPengumumanPosts.sort(
+	(a, b) => b.data.postDate.getTime() - a.data.postDate.getTime(),
+);
+const pengumumanLastest = pengumumanPosts.slice(0, 5);
+
+// List Artikel
+const allArtikelPosts = await getCollection("artikel");
+const artikelPosts = allArtikelPosts.sort(
+	(a, b) => b.data.postDate.getTime() - a.data.postDate.getTime(),
+);
+const articleLatest = artikelPosts.slice(0, 4);
+
+// Layout
+
+const newsLayout = (position: number) =>
+	position === 0
+		? "col-span-2 row-span-2 col-start-2 row-start-1 lg:border-l lg:pl-4 mb-8 border-b pb-6 lg:pb-0 lg:border-b-0"
+		: "col-start-1 mb-6 border-b lg:pb-0 lg:border-b-0";
+
+const articleLayout = (position: number) =>
+	position === 0
+		? "col-span-3  border-b pb-4 lg:pb-8"
+		: "col-span-1 border-b lg:border-b-0 lg:border-r last:border-0  py-4 lg:pb-8 lg:px-8";
 ---
 
 <Layout title="hallo">
-	<div class="container mt-16">
-		<h1 class="text-5xl font-serif">Artikel.</h1>
+	<div class="container lg:border-x lg:flex gap-4">
+		<div class="lg:w-3/4">
+			<SectionTitle title="berita terkini" href="/berita/" />
+			<ul
+				class="lg:grid grid-cols-3 grid-rows-1 grid-flow-col-dense gap-4"
+			>
+				{
+					latestBeritaPost.map((post, idx) => (
+						<li class={newsLayout(idx)}>
+							<HomePostList
+								title={post.data.title}
+								coverImage={post.data.coverImage}
+								excerpt={
+									idx === 0 ? post.data.excerpt : undefined
+								}
+								href={`/berita/${post.slug}`}
+								leading={idx === 0}
+								align={idx === 0 ? "center" : "left"}
+								postDate={post.data.postDate}
+							/>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+		<div class="border-l"></div>
+		<div class="lg:w-1/4">
+			<SectionTitle title="pengumuman" href="/pengumuman/" />
+			<ul>
+				{
+					pengumumanLastest.map((post, idx) => (
+						<li class="border-b mb-4 last:border-0">
+							<div>
+								<HomePostList
+									title={post.data.title}
+									coverImage={post.data.coverImage}
+									href={`/pengumuman/${post.slug}`}
+									postDate={post.data.postDate}
+								/>
+							</div>
+						</li>
+					))
+				}
+			</ul>
+		</div>
 	</div>
-	<div class="container">
-		<PostList />
+
+	<div class="container lg:px-0 border-t lg:border-x">
+		<div class="lg:px-8 lg:border-t mt-4">
+			<SectionTitle title="Artikel" href="/artikel/" />
+		</div>
+		<ul class="lg:grid grid-cols-3 grid-rows-1">
+			{
+				articleLatest.map((post, idx) => (
+					<li class={articleLayout(idx)}>
+						<HomePostList
+							title={post.data.title}
+							postDate={post.data.postDate}
+							author={post.data.author}
+							excerpt={idx === 0 ? post.data.excerpt : undefined}
+							href={post.slug}
+							leading={idx === 0}
+							align={idx === 0 ? "center" : "left"}
+						/>
+					</li>
+				))
+			}
+		</ul>
 	</div>
 </Layout>

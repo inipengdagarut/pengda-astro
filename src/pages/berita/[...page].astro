@@ -1,0 +1,84 @@
+---
+export const prerender = true;
+
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+
+import SectionTitle from "@/components/SectionTitle.astro";
+import Layout from "@/layouts/Layout.astro";
+import PostList from "@/components/PostList.astro";
+
+import { Button, buttonVariants } from "@/components/ui/button";
+
+export const getStaticPaths = (async ({ paginate }) => {
+    const allPosts = await getCollection("berita");
+    const posts = allPosts.sort(
+        (a, b) => b.data.postDate.getTime() - a.data.postDate.getTime(),
+    );
+    return paginate(posts, { pageSize: 5 });
+}) satisfies GetStaticPaths;
+const { page } = Astro.props;
+---
+
+<Layout title="Berita">
+    <div class="container mx-auto mt-16">
+        <SectionTitle title="Berita Pengda." />
+    </div>
+    <div class="container mx-auto lg:flex gap-16">
+        <div class="lg:w-3/4">
+            <ul>
+                {
+                    page.data.map((post, idx) => (
+                        <li class="py-6 border-b last:border-0">
+                            <PostList
+                                title={post.data.title}
+                                postDate={post.data.postDate}
+                                slug={`/berita/${post.slug}`}
+                                excerpt={post.data.excerpt}
+                                coverImage={post.data.coverImage}
+                                tags={post.data.tags}
+                                leading={idx === 0 ? true : false}
+                            />
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+
+        <div class="lg:w-1/4">ss</div>
+    </div>
+    <div class="container mx-auto mt-16">
+        <div class="w-full lg:w-3/4 pr-12">
+            <div class="flex w-full justify-between">
+                <div class="w-1/2">
+                    {
+                        page.url.prev ? (
+                            <a
+                                class={buttonVariants({ variant: "outline" })}
+                                href={page.url.prev}
+                            >
+                                Sebelumnya
+                            </a>
+                        ) : (
+                            ""
+                        )
+                    }
+                </div>
+                <div class="w-1/2 flex flex-row-reverse">
+                    {
+                        page.url.next ? (
+                            <a
+                                class={buttonVariants({ variant: "outline" })}
+                                href={page.url.next}
+                            >
+                                Selanjutnya
+                            </a>
+                        ) : (
+                            ""
+                        )
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>

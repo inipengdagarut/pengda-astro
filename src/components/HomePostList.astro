@@ -1,0 +1,86 @@
+---
+import Date from "@/components/Date.astro";
+
+interface Props {
+  postDate: string | Date | number;
+  href: string;
+  title: string;
+  coverImage?: string;
+  excerpt?: string;
+  author: string;
+  leading?: boolean;
+  align?: 'left' | 'center' | 'right'
+}
+
+import { Image } from "astro:assets";
+
+const { postDate, href, title, coverImage, excerpt, author, leading, align } =
+  Astro.props;
+
+const textSize = (leading: Props["leading"]) => {
+  if (leading) {
+    return {
+      titleText:
+        "text-2xl lg:text-5xl mt-2 mb-2 lg:mt-2 font-normal font-serif",
+    };
+  }
+  return {
+    titleText: "text-xl mt-2 mb-2 lg:mt-2 font-normal font-serif leading-tight",
+  };
+};
+
+const textAlign = (agln:Props['align']) => {
+  if (agln === 'center') {
+    return ('text-center')
+  }
+  if (agln === 'right') {
+    return ('text-right')
+  }
+  return ('text-left')
+}
+
+---
+
+<div class="max-w-[72ch] mx-auto">
+  {
+    coverImage ? (
+      <div class="mb-4">
+        <a href={href} class="block w-full aspect-[16/10] object-cover rounded-lg overflow-hidden">
+          <Image
+            src={coverImage}
+            alt={`picture of ${title}`}
+            widths={[1024, 480]}
+            class="w-full aspect-[16/10] object-cover rounded-lg hover:opacity-85 ease-out duration-200"
+          />
+        </a>
+      </div>
+    ) : (
+      ""
+    )
+  }
+  <Date
+    time={postDate}
+    class={`mb-1 uppercase font-semibold text-muted-foreground text-xs ${textAlign(align)}`}
+  />
+  <h2 class={`${textSize(leading).titleText} ${textAlign(align)}`}>
+    <a href={href} class="hover:underline">{title}</a>
+  </h2>
+
+  {
+    author ? (
+    <div class={`capitalize font-semibold text-sm text-muted-foreground mb-2 ${textAlign(align)}`}>
+      Oleh : {author}
+    </div>
+    ): ''
+  }
+  
+  {
+    leading ? (
+      <div class="mt-4">
+      <p class={`line-clamp-3 lg:line-clamp-5 lg:text-lg ${textAlign(align)}`}>{excerpt}</p>
+      </div>
+    ) : (
+      ""
+    )
+  }
+</div>

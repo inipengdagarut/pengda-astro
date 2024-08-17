@@ -2,9 +2,9 @@
 title: 'Konferensi Daerah Ikatan Notaris Indonesia Kabupaten Garut 2024: Momen Demokrasi dan Solidaritas Profesi Hukum'
 postDate: '2024-05-12'
 author: 'Tedy Herlambang'
-image: './images/ini-garut.jpeg'
-summary: 'Pada tanggal 12 Mei 2024, Hotel Santika Garut menjadi saksi pelaksanaan Konferensi Daerah Ikatan Notaris Indonesia (Konferda) Kabupaten Garut yang digelar dengan agenda yang beragam dan penting bagi perkembangan organisasi ini. Acara ini tidak hanya menjadi forum untuk pertanggungjawaban Pengurus Daerah (Pengda) Garut periode sebelumnya, tetapi juga sebagai ajang pemilihan Ketua Pengda untuk periode 2023-2026.'
-tags: ['kegiatan', 'konferda', 'pengurus']
+coverImage: './images/ini-garut.jpeg'
+excerpt: 'Pada tanggal 12 Mei 2024, Hotel Santika Garut menjadi saksi pelaksanaan Konferensi Daerah Ikatan Notaris Indonesia (Konferda) Kabupaten Garut yang digelar dengan agenda yang beragam dan penting bagi perkembangan organisasi ini. Acara ini tidak hanya menjadi forum untuk pertanggungjawaban Pengurus Daerah (Pengda) Garut periode sebelumnya, tetapi juga sebagai ajang pemilihan Ketua Pengda untuk periode 2023-2026.'
+tags: [kegiatan, konferda, pengurus]
 draft: false
 ---
 
