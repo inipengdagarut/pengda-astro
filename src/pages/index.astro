@@ -3,9 +3,10 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 
 // Components
-import PostList from "@/components/PostList.astro";
+import { Image } from "astro:assets";
 import HomePostList from "@/components/HomePostList.astro";
 import SectionTitle from "@/components/SectionTitle.astro";
+import { GalleryItem } from "@/components/react/GalleryItem";
 
 // Posts Data
 const allBeritaPosts = await getCollection("berita");
@@ -28,6 +29,13 @@ const artikelPosts = allArtikelPosts.sort(
 );
 const articleLatest = artikelPosts.slice(0, 4);
 
+// List Gallery
+const allGaleriPosts = await getCollection("galeri"); // List photo
+const galeriPosts = allGaleriPosts.sort(
+    (a, b) => b.data.postDate.getTime() - a.data.postDate.getTime(),
+);
+const lastGaleri = galeriPosts.slice(0, 3);
+
 // Layout
 
 const newsLayout = (position: number) =>
@@ -41,7 +49,7 @@ const articleLayout = (position: number) =>
 		: "col-span-1 border-b lg:border-b-0 lg:border-r last:border-0  py-4 lg:pb-8 lg:px-8";
 ---
 
-<Layout title="hallo">
+<Layout title="Website Pengurus Daerah Kabupaten Garut Ikatan Notaris Indonesia">
 	<div class="container lg:border-x lg:flex gap-4">
 		<div class="lg:w-3/4">
 			<SectionTitle title="berita terkini" href="/berita/" />
@@ -77,7 +85,6 @@ const articleLayout = (position: number) =>
 							<div>
 								<HomePostList
 									title={post.data.title}
-									coverImage={post.data.coverImage}
 									href={`/pengumuman/${post.slug}`}
 									postDate={post.data.postDate}
 								/>
@@ -110,5 +117,41 @@ const articleLayout = (position: number) =>
 				))
 			}
 		</ul>
+	</div>
+	<div class="container lg:px-0 border-t lg:border-x pb-8 lg:pb-16">
+		<div class="lg:px-8 lg:border-t mt-4">
+			<SectionTitle title="Galeri" href="/artikel/" />
+		</div>
+		<ul class="lg:px-8 grid grid-cols-3 gap-2">
+            {
+                lastGaleri.map((post, idx) => (
+                    <li class="mb-0 w-full overflow-hidden aspect-square lg:aspect-[16/10]">
+                        <GalleryItem
+                            client:load
+                            title={post.data.title}
+                            caption={post.data.caption}
+                            size={post.data.imgSrc.width}
+                        >
+                            <div slot="thumbnail">
+                                <Image
+                                    src={post.data.imgSrc}
+                                    alt={post.data.title}
+                                    widths={[256, 480]}
+                                    sizes={`(max-width: 720px) 256px, (min-width:720px) 480px`}
+                                />
+                            </div>
+                            <div slot="theImage">
+                                <Image
+                                    class="rounded w-auto h-full"
+                                    src={post.data.imgSrc}
+                                    alt={post.data.title}
+                                    width={1280}
+                                />
+                            </div>
+                        </GalleryItem>
+                    </li>
+                ))
+            }
+        </ul>
 	</div>
 </Layout>

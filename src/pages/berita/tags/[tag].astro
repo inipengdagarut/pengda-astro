@@ -1,0 +1,58 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+
+import Layout from "@/layouts/Layout.astro";
+import PostList from "@/components/PostList.astro";
+import SectionTitle from "@/components/SectionTitle.astro";
+
+export const getStaticPaths = (async () => {
+    const allPosts = await getCollection("berita");
+    const uniqueTags = [
+        ...new Set(allPosts.map((post) => post.data.tags).flat()),
+    ];
+
+    return uniqueTags.map((tag) => {
+        const filteredPosts = allPosts.filter((post) =>
+            post.data.tags.includes(tag),
+        );
+        return {
+            params: { tag },
+            props: { posts: filteredPosts },
+        };
+    });
+
+    return [];
+}) satisfies GetStaticPaths;
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<Layout title={`Berita dengan kategori ${tag}`}>
+    <div class="container mx-auto mt-16">
+        <SectionTitle title={tag} />
+    </div>
+    <div class="container mx-auto lg:flex gap-16">
+        <div class="lg:w-3/4">
+            <ul>
+                {
+                    posts.map((post, idx) => (
+                        <li class="py-6 border-b last:border-0">
+                            <PostList
+                                title={post.data.title}
+                                postDate={post.data.postDate}
+                                slug={`/berita/${post.slug}`}
+                                excerpt={post.data.excerpt}
+                                coverImage={post.data.coverImage}
+                                tags={post.data.tags}
+                                leading={idx === 0 ? true : false}
+                                collection={post.collection}
+                            />
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+    </div>
+</Layout>

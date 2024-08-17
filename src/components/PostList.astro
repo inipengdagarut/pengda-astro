@@ -1,4 +1,13 @@
 ---
+import type { Post } from "@/types";
+
+interface Props extends Post {
+    leading: string;
+    slug: string;
+    collection: string;
+}
+
+
 import { Image } from "astro:assets";
 import Date from "@/components/Date.astro";
 import { badgeVariants } from "@/components/ui/badge";
@@ -26,7 +35,7 @@ function layout(leading: string) {
 
 
 
-const { leading, excerpt, title, slug, postDate, coverImage, tags, author } =
+const { leading, excerpt, title, slug, postDate, coverImage, tags, author, collection } =
     Astro.props;
 ---
 
@@ -73,7 +82,7 @@ const { leading, excerpt, title, slug, postDate, coverImage, tags, author } =
         <div class="flex gap-1">
             {
                 tags.map((tag, idx) => (
-                    <a href={`/tags/${tag}`} class={badgeVariants({ variant: "outline" })}>
+                    <a href={`/${collection}/tags/${tag}`} class={badgeVariants({ variant: "outline" })}>
                         {tag}
                     </a>
                 ))

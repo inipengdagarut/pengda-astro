@@ -1,21 +1,55 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
-import Post from '@/layouts/Post.astro';
+import type { Post } from "@/types";
+import { type CollectionEntry, getCollection } from "astro:content";
+import PostLayout from "@/layouts/Post.astro";
 
 export async function getStaticPaths() {
-	const posts = await getCollection('berita');
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post,
+	const allPosts = await getCollection("berita");
+	return allPosts.map((entry) => ({
+		params: { slug: entry.slug },
+		props: { entry },
 	}));
 }
-type Props = CollectionEntry<'berita'>;
 
-const post = Astro.props;
-const { Content } = await post.render();
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const getPosts = await getCollection("berita");
+const currentPost = getPosts.find((post) => post.slug === entry.slug);
+let relatedPosts: Post[] = [];
+if (currentPost) {
+	relatedPosts = getPosts.filter(
+		(post) =>
+			post.slug !== currentPost.slug &&
+			post.data.tags.some((tag) => currentPost.data.tags.includes(tag)),
+	);
+}
+
+// realted Post
 ---
 
-<Post {...post.data}>
-	<Content slot="content"/>
-	<div slot="content-aside">ll</div>
-</Post>
+<PostLayout {...entry.data}>
+	<Content slot="content" />
+	<div slot="content-aside">
+		<div class="p-4 border rounded">
+			<h4
+				class="font-semibold text-muted-foreground text-xs mb-0 capitalize">
+				{entry.collection} Terkait
+			</h4>
+			<ul>
+				{
+					relatedPosts.slice(0, 5).map((post) => (
+						<li class="py-2 border-b last:border-0">
+							<a
+								href={`/berita/${post.slug}`}
+								class="hover:underline font-semibold text-sm"
+							>
+								{post.data.title}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+</PostLayout>

@@ -33,7 +33,7 @@ const { coverImage, author, title, postDate, excerpt } = Astro.props;
         }
     </div>
     <div class="container">
-        <article class="max-w-7xl mx-auto px-4">
+        <article class="max-w-6xl mx-auto px-4">
             <div class="mb-8 flex flex-col items-center">
                 <p class="text-sm lg:text-md uppercase font-bold mb-2">
                     <Date time={postDate} />
@@ -57,22 +57,15 @@ const { coverImage, author, title, postDate, excerpt } = Astro.props;
                     )
                 }
 
-                <div class="lg:flex w-full justify-center gap-4">
+                <div class="lg:flex w-full justify-center gap-8">
                     <div class="">
                         <div class="prose mb-8 lg:mb-16 mx-auto">
                             <slot name="content" />
                         </div>
                     </div>
-                    <div class="lg:w-2/12">
-                        <aside class="border p-4">
-                            <h4
-                                class="font-bold text-xs mb-4 capitalize lg:text-center"
-                            >
-                                Postingan Terkait
-                            </h4>
-                            <div class="text-sm">
-                                <slot name="content-aside" />
-                            </div>
+                    <div class="lg:w-3/12">
+                        <aside>
+                            <slot name="content-aside" />
                         </aside>
                     </div>
                 </div>

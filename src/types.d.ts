@@ -10,6 +10,14 @@ export interface NavMenu {
     subMenu?: Link[]
 }
 
+export interface galleryItem {
+    thumbnail: ReactNode
+    theImage: ReactNode
+    caption?: string
+    title?: string
+    size?: number
+}
+
 export interface Post {
     author?: string;
     collections: string;

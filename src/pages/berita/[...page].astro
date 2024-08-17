@@ -2,13 +2,18 @@
 export const prerender = true;
 
 import type { GetStaticPaths } from "astro";
-import { getCollection } from "astro:content";
+import { CollectionEntry, getCollection } from "astro:content";
+
+interface Pros {
+    page: CollectionEntry<'berita'>
+}
 
 import SectionTitle from "@/components/SectionTitle.astro";
 import Layout from "@/layouts/Layout.astro";
 import PostList from "@/components/PostList.astro";
 
 import { Button, buttonVariants } from "@/components/ui/button";
+import { badgeVariants } from "@/components/ui/badge";
 
 export const getStaticPaths = (async ({ paginate }) => {
     const allPosts = await getCollection("berita");
@@ -17,6 +22,9 @@ export const getStaticPaths = (async ({ paginate }) => {
     );
     return paginate(posts, { pageSize: 5 });
 }) satisfies GetStaticPaths;
+
+const allPosts = await getCollection("berita");
+const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
 const { page } = Astro.props;
 ---
 
@@ -38,6 +46,7 @@ const { page } = Astro.props;
                                 coverImage={post.data.coverImage}
                                 tags={post.data.tags}
                                 leading={idx === 0 ? true : false}
+                                collection={post.collection}
                             />
                         </li>
                     ))
@@ -45,7 +54,23 @@ const { page } = Astro.props;
             </ul>
         </div>
 
-        <div class="lg:w-1/4">ss</div>
+        <div class="lg:w-1/4">
+            <div class="lg:sticky top-20">
+                <SectionTitle title="kategori berita" href="#" />
+                <div class="flex flex-wrap gap-2">
+                    {
+                        tags.map((tag) => (
+                            <a
+                                href={`/berita/tags/${tag}`}
+                                class={badgeVariants({ variant: "outline" })}
+                            >
+                                {tag}
+                            </a>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
     </div>
     <div class="container mx-auto mt-16">
         <div class="w-full lg:w-3/4 pr-12">
