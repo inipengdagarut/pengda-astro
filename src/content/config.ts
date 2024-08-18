@@ -52,6 +52,23 @@ const galleryItemCollections = defineCollection({
     })
 })
 
+const anggotaCollections = defineCollection({
+    type: 'data',
+    schema: ({ image }) => z.object({
+        fullName: z.string(),
+        address: z.string(),
+        kelurahan: z.string(),
+        kecamatan: z.string(),
+        phone: z.array(z.string()),
+        email: z.string(),
+        avatar: image(),
+        location: z.object({
+            lat: z.number(),
+            lang: z.number(),
+        })
+    })
+})
+
 
 export const collections = {
     'berita': beritaPostCollections,
@@ -59,3 +76,5 @@ export const collections = {
     'galeri': galleryItemCollections,
     'pengumuman': pengumumanCollections,
 }
+
+

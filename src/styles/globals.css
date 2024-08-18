@@ -71,3 +71,7 @@
 .red-gradient {
   background: linear-gradient(120deg, #d53369 0%, #daae51 100%);
 }
+
+.thumbnail img {
+  @apply w-full aspect-square lg:aspect-[16/10] rounded overflow-hidden object-cover
+}

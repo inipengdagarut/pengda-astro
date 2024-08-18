@@ -2,24 +2,35 @@
 interface Props {
     title: string;
     href?: string;
-    type?: 'page' | 'subTitle'
+    type?: "page" | "subTitle";
+    size?: "sm" | "xl";
 }
 
-import {ArrowRightIcon} from '@radix-ui/react-icons'
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 
-const {title, href, type } = Astro.props
-
+const { title, href, type, size } = Astro.props;
 ---
 
-<div class="my-4 flex justify-between items-center capitalize">
-    {href ? (
-        <h2 class="text-md font-semibold">
-            <a href={href} class="hover:text-muted-foreground">{title}</a>
-        </h2>
-        <a href={href} class="font-normal text-muted-foreground hover:underline flex gap-4 items-center">
-            <ArrowRightIcon />
-        </a>
-    ):(
-        <h1 class="text-2xl lg:text-6xl font-serif bg-clip-text text-transparent bg-gradient-to-br from-zinc-900 to-slate-500">{title}</h1>
-    )}
+<div class="flex justify-between items-center capitalize my-4">
+    {
+        href ? (
+            <>
+                <h2 class="text-md font-semibold">
+                    <a href={href} class="hover:text-muted-foreground">
+                        {title}
+                    </a>
+                </h2>
+                <a
+                    href={href}
+                    class="font-normal text-muted-foreground hover:underline flex gap-4 items-center"
+                >
+                    <ArrowRightIcon />
+                </a>
+            </>
+        ) : (
+            <h2 class="text-2xl lg:text-6xl font-serif bg-clip-text text-transparent bg-gradient-to-br from-zinc-900 to-slate-500">
+                {title}
+            </h2>
+        )
+    }
 </div>

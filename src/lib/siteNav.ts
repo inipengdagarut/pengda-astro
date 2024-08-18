@@ -20,6 +20,10 @@ const siteNav = [
         ]
     },
     {
+        title: "Artikel",
+        href: "/artikel",
+    },
+    {
         title: "Organisasi",
         href: "#",
         subMenu: [
@@ -34,10 +38,6 @@ const siteNav = [
                 desc: "daftar notaris di Kabupaten Garut"
             },
         ]
-    },
-    {
-        title: "Artikel",
-        href: "/artikel",
     },
     {
         title: "Galeri",
