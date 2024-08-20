@@ -29,7 +29,7 @@ const MenuItem: React.FC<NavMenu> = ({ title, href, subMenu }) => {
         <>
             {
                 subMenu.map((Link, idx) => (
-                    <div className="w-full py-2 capitalize" >
+                    <div className="w-full py-2 capitalize" key={idx}>
                         <a href={Link.href}>{Link.title}</a>
                     </div>
                 ))
@@ -61,7 +61,7 @@ export const SideNavMenu: React.FC<Props> = ({ dataMenu }) => {
                 <ul className="flex flex-col">
                     {
                         dataMenu.map((nav, idx) => (
-                            <li>
+                            <li key={idx}>
                                 <MenuItem title={nav.title} href={nav.href} key={idx} subMenu={nav.subMenu} />
                             </li>
                         ))

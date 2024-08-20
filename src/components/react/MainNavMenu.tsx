@@ -38,8 +38,8 @@ const MenuItem: React.FC<NavMenu> = ({ title, href, subMenu }) => {
             <NavigationMenuContent>
             <ul className="w-[400px] p-4">
                     {
-                        subMenu.map((Link) => (
-                            <li className="mb-4 last:mb-0">
+                        subMenu.map((Link,idx) => (
+                            <li className="mb-4 last:mb-0" key={idx}>
                                 <NavigationMenuLink asChild className={LinkStyle}>
                                     <a href={Link.href} className="capitalize flex flex-wrap flex-col items-start text-left w-full p-4">
                                         <span className="font-medium">{Link.title}</span>

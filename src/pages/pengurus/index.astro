@@ -20,6 +20,9 @@ const posInti = ['ketua', 'wakil ketua', 'sekertaris', 'bendahara', 'dana usaha'
 const pengurusInti = allPengurus.data.filter(
     (member:Pengurus) => posInti.includes(member.position)
 );
+const bidangs = allPengurus.data.filter(
+    (member:Pengurus) => !posInti.includes(member.position)
+);
 
 const images: string[] = [
     "https://picsum.photos/300/200",
@@ -30,8 +33,21 @@ const images: string[] = [
     "https://picsum.photos/300/300",
 ];
 
-console.log(pengurusInti.length);
+function categorizeByPosition(members) {
+    return members.reduce((acc, member) => {
+        const { position } = member;
+        if (!acc[position]) {
+            acc[position] = [];
+        }
+        acc[position].push(member);
+        return acc;
+    }, {});
+}
+
+const bidang = categorizeByPosition(bidangs);
+
 ---
+
 
 <Layout
     title="Susunan Pengurus Daerah Kabupaten Garut Ikatan Notaris Indonesia"
@@ -120,7 +136,7 @@ console.log(pengurusInti.length);
         </div>
     </div>
     <div class="container mb-8 lg:mb-16">
-        <ul class="grid md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-2 md:gap-6">
+        <ul class="grid md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-2 md:gap-6 mb-8">
             {
                 pengurusInti.map((inti:Pengurus, idx) => (
                     <li class="flex md:block gap-4">
@@ -138,6 +154,28 @@ console.log(pengurusInti.length);
                             </p>
                             <p class="font-bold">{inti.fullName}</p>
                         </div>
+                    </li>
+                ))
+            }
+        </ul>
+        <ul class="md:grid md:grid-cols-2 grid-flow-row-dense">
+            {
+                Object.keys(bidang).map((cat, i) => (
+                    <li class="mb-4">
+                        <h3 class="text-sm font-bold capitalize text-muted-foreground">{cat}</h3>
+                        <ul>
+                        {bidang[cat].map((member:Pengurus, idx) => (
+                            <li class="flex">
+                                <div>
+                                <img src={member.image} alt="">
+
+                                </div>
+                                <div class="capitalize">
+                                    {member.fullName}
+                                </div>
+                            </li>
+                        ))}
+                        </ul>
                     </li>
                 ))
             }
