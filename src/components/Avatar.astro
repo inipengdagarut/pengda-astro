@@ -6,6 +6,7 @@ interface Props {
     alt: string;
     fallbackText?: string;
     size?: "sm" | "md" | "lg" | "xl";
+    type?: 'circle' | 'square'
 }
 function avaSize(size: "sm" | "md" | "lg" | "xl" | "2xl" | undefined) {
   if (size === 'sm') return ('w-8 h-8')
@@ -15,6 +16,13 @@ function avaSize(size: "sm" | "md" | "lg" | "xl" | "2xl" | undefined) {
   return ('w-10 h-10')
 }
 
+function avaType(type: 'circle' | 'square' | undefined) {
+  if(type === 'square') {
+    return 'rounded-lg'
+  }
+  return 'rounded-full'
+}
+
 const getInitial = (theName: string | undefined) => {
 		if (!theName) {
 			return 'X';
@@ -22,10 +30,10 @@ const getInitial = (theName: string | undefined) => {
 		return theName.charAt(0).toUpperCase();
 	}
 
-const { src, alt, size, fallbackText } = Astro.props;
+const { src, alt, size, fallbackText, type } = Astro.props;
 ---
 
-<div class={`relative flex shrink-0 overflow-hidden rounded-full bg-muted ${avaSize(size)}`}>
+<div class={`relative flex shrink-0 overflow-hidden ${avaType(type)} bg-muted ${avaSize(size)}`}>
     <Image src={src} alt={alt} class='aspect-square w-full h-full z-10' width={128} height={128}/>
     <div class="absolute top-0 right-0 bottom-0 left-0 flex items-center justify-center">
       <p>{getInitial(fallbackText)}</p>

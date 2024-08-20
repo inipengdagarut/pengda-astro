@@ -12,16 +12,23 @@ import { Image } from "astro:assets";
 // import MasonryLayout from "@/components/react/MasonryLayout";
 import ImageSlider from "@/components/react/ImageSlider";
 import SectionTitle from "@/components/SectionTitle.astro";
+import Avatar from "@/components/Avatar.astro";
 
 import { getEntry } from "astro:content";
 const allPengurus = await getEntry("mockup", "daftarPengurus");
 
-const posInti = ['ketua', 'wakil ketua', 'sekertaris', 'bendahara', 'dana usaha']
-const pengurusInti = allPengurus.data.filter(
-    (member:Pengurus) => posInti.includes(member.position)
+const posInti = [
+    "ketua",
+    "wakil ketua",
+    "sekertaris",
+    "bendahara",
+    "dana usaha",
+];
+const pengurusInti = allPengurus.data.filter((member: Pengurus) =>
+    posInti.includes(member.position),
 );
 const bidangs = allPengurus.data.filter(
-    (member:Pengurus) => !posInti.includes(member.position)
+    (member: Pengurus) => !posInti.includes(member.position),
 );
 
 const images: string[] = [
@@ -45,9 +52,7 @@ function categorizeByPosition(members) {
 }
 
 const bidang = categorizeByPosition(bidangs);
-
 ---
-
 
 <Layout
     title="Susunan Pengurus Daerah Kabupaten Garut Ikatan Notaris Indonesia"
@@ -136,9 +141,11 @@ const bidang = categorizeByPosition(bidangs);
         </div>
     </div>
     <div class="container mb-8 lg:mb-16">
-        <ul class="grid md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-2 md:gap-6 mb-8">
+        <ul
+            class="grid md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-2 md:gap-6 mb-8"
+        >
             {
-                pengurusInti.map((inti:Pengurus, idx) => (
+                pengurusInti.map((inti: Pengurus, idx) => (
                     <li class="flex md:block gap-4">
                         <div class="w-1/4 md:w-full aspect-square overflow-hidden rounded-lg mb-2">
                             <Image
@@ -158,23 +165,30 @@ const bidang = categorizeByPosition(bidangs);
                 ))
             }
         </ul>
-        <ul class="md:grid md:grid-cols-2 grid-flow-row-dense">
+        <ul class="md:grid md:grid-cols-2 lg:grid-cols-3 grid-flow-row-dense gap-6">
             {
                 Object.keys(bidang).map((cat, i) => (
                     <li class="mb-4">
-                        <h3 class="text-sm font-bold capitalize text-muted-foreground">{cat}</h3>
+                        <h3 class="text-sm font-bold capitalize text-muted-foreground mb-4">
+                            {cat}
+                        </h3>
                         <ul>
-                        {bidang[cat].map((member:Pengurus, idx) => (
-                            <li class="flex">
-                                <div>
-                                <img src={member.image} alt="">
-
-                                </div>
-                                <div class="capitalize">
-                                    {member.fullName}
-                                </div>
-                            </li>
-                        ))}
+                            {bidang[cat].map((member: Pengurus, idx) => (
+                                <li class="flex gap-4 items-center mb-3">
+                                    <div>
+                                        <Avatar
+                                            src={member.image}
+                                            alt={member.fullName}
+                                            fallbackText={member.fullName}
+                                            size="lg"
+                                            type="square"
+                                        />
+                                    </div>
+                                    <div class="capitalize font-semibold">
+                                        {member.fullName}
+                                    </div>
+                                </li>
+                            ))}
                         </ul>
                     </li>
                 ))
