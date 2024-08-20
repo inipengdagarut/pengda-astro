@@ -147,7 +147,7 @@ const bidang = categorizeByPosition(bidangs);
             {
                 pengurusInti.map((inti: Pengurus, idx) => (
                     <li class="flex md:block gap-4">
-                        <div class="w-1/4 md:w-full aspect-square overflow-hidden rounded-lg mb-2">
+                        <div class="w-24 md:w-full aspect-square overflow-hidden rounded-lg mb-2">
                             <Image
                                 src={inti.image}
                                 alt="pics"
@@ -155,7 +155,7 @@ const bidang = categorizeByPosition(bidangs);
                                 class="w-full h-full aspect-square object-cover"
                             />
                         </div>
-                        <div class="w-full">
+                        <div class="">
                             <p class="text-sm text-muted-foreground font-bold capitalize mb-0.5">
                                 {inti.position}
                             </p>
@@ -165,7 +165,7 @@ const bidang = categorizeByPosition(bidangs);
                 ))
             }
         </ul>
-        <ul class="md:grid md:grid-cols-2 lg:grid-cols-3 grid-flow-row-dense gap-6">
+        <ul class="md:grid md:grid-cols-2 lg:grid-cols-2 grid-flow-row-dense gap-6">
             {
                 Object.keys(bidang).map((cat, i) => (
                     <li class="mb-4">
@@ -175,12 +175,12 @@ const bidang = categorizeByPosition(bidangs);
                         <ul>
                             {bidang[cat].map((member: Pengurus, idx) => (
                                 <li class="flex gap-4 items-center mb-3">
-                                    <div>
+                                    <div class="w-24">
                                         <Avatar
                                             src={member.image}
                                             alt={member.fullName}
                                             fallbackText={member.fullName}
-                                            size="lg"
+                                            size="2xl"
                                             type="square"
                                         />
                                     </div>
