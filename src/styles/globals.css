@@ -75,3 +75,10 @@
 .thumbnail img {
   @apply w-full aspect-square lg:aspect-[16/10] rounded overflow-hidden object-cover
 }
+
+.all-heading-center h1,
+.all-heading-center h2,
+.all-heading-center h3,
+.all-heading-center h4 {
+  text-align: center;
+}

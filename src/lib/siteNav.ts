@@ -37,6 +37,11 @@ const siteNav = [
                 href: "/anggota",
                 desc: "daftar notaris di Kabupaten Garut"
             },
+            {
+                title: "Kode Etik",
+                href: "/kodeetik",
+                desc: "Kode Etik untuk seluruh anggota Ikatan Notaris Indonesia"
+            },
         ]
     },
     {
