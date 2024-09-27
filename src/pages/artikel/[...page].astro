@@ -1,0 +1,115 @@
+---
+export const prerender = true;
+
+import type { GetStaticPaths } from "astro";
+import { CollectionEntry, getCollection } from "astro:content";
+
+interface Pros {
+    page: CollectionEntry<'berita'>
+}
+
+import SectionTitle from "@/components/SectionTitle.astro";
+import Layout from "@/layouts/Layout.astro";
+import PostList from "@/components/PostList.astro";
+
+import { Button, buttonVariants } from "@/components/ui/button";
+import { badgeVariants } from "@/components/ui/badge";
+
+export const getStaticPaths = (async ({ paginate }) => {
+    const allPosts = await getCollection("artikel");
+    const posts = allPosts.sort(
+        (a, b) => b.data.postDate.getTime() - a.data.postDate.getTime(),
+    );
+    return paginate(posts, { pageSize: 5 });
+}) satisfies GetStaticPaths;
+
+const allPosts = await getCollection("artikel");
+const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+const { page } = Astro.props;
+---
+
+<Layout title="Artikel">
+    <div class="container mx-auto mt-8 lg:mt-16">
+        <SectionTitle title="Artikel." />
+    </div>
+    <div class="container mx-auto flex">
+        <div class="prose lg:prose-lg">
+            <p>Kumpulan Artikel, Jurnal dan Tulisan-tulisan seputar kenotariatan.</p>
+        </div>
+    </div>
+    <div class="container mx-auto lg:flex gap-16">
+        <div class="lg:w-3/4">
+            <ul>
+                {
+                    page.data.map((post, idx) => (
+                        <li class="py-6 border-b last:border-0">
+                            <PostList
+                                title={post.data.title}
+                                postDate={post.data.postDate}
+                                slug={`/artikel/${post.slug}`}
+                                excerpt={post.data.excerpt}
+                                coverImage={post.data.coverImage}
+                                tags={post.data.tags}
+                                leading={idx === 0 ? true : false}
+                                collection={post.collection}
+                                author={post.data.author}
+                            />
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+
+        <div class="lg:w-1/4">
+            <div class="lg:sticky top-20">
+                <SectionTitle title="kategori berita" href="`" />
+                <div class="flex flex-wrap gap-2">
+                    {
+                        tags.map((tag) => (
+                            <a
+                                href={`/artikel/tags/${tag}`}
+                                class={badgeVariants({ variant: "outline" })}
+                            >
+                                {tag}
+                            </a>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mx-auto my-16">
+        <div class="w-full lg:w-3/4 pr-12">
+            <div class="flex w-full justify-between">
+                <div class="w-1/2">
+                    {
+                        page.url.prev ? (
+                            <a
+                                class={buttonVariants({ variant: "outline" })}
+                                href={page.url.prev}
+                            >
+                                Sebelumnya
+                            </a>
+                        ) : (
+                            ""
+                        )
+                    }
+                </div>
+                <div class="w-1/2 flex flex-row-reverse">
+                    {
+                        page.url.next ? (
+                            <a
+                                class={buttonVariants({ variant: "outline" })}
+                                href={page.url.next}
+                            >
+                                Selanjutnya
+                            </a>
+                        ) : (
+                            ""
+                        )
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>
